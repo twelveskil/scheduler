@@ -1,0 +1,12 @@
+{% block page_content %}
+<div class="col-md-8 offset-md-2">
+    <h1>Event list</h1>
+    <hr>
+    {% for event in events %}
+    <h2>{{ event.title }}</a></h2>
+    <small>
+        {{ event.date }} |&nbsp;
+    </small>
+    {% endfor %}
+</div>
+{% endblock %}
