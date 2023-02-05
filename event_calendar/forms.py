@@ -8,11 +8,11 @@ class EventForm(forms.Form):
             "placeholder": "Date: YYYY-MM-DD"
         })
     )
-    event = forms.CharField(
+    title = forms.CharField(
         max_length=225,
         widget=forms.TextInput(attrs={
             "class": "form-control",
-            "placeholder": "Enter event name here."
+            "placeholder": "Enter event title here."
         })
     )
     
