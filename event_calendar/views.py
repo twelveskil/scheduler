@@ -1,5 +1,5 @@
 # pylint: disable=E0611
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render
 from event_calendar.models import Event
 from event_calendar.forms import EventForm
 
@@ -12,17 +12,14 @@ def calendar_index(request):
 
 def event_create(request):
     form = EventForm()
-    # ISSUE AREA #
     if request.method == 'POST':
         form = EventForm(request.POST)
         if form.is_valid():
             event = Event(
                 date = form.cleaned_data['date'],
-                event = form.cleaned_data['event']
+                title = form.cleaned_data['title']
             )
             event.save()
-        return HttpResponseRedirect('/thanks/')
-    # END ISSUE AREA #
     context = {
         'form' : form
     }
