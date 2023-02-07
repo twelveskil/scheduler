@@ -4,6 +4,7 @@ from event_calendar.models import Event
 from event_calendar.forms import EventForm
 
 def calendar_index(request):
+    """Creates view for the homepage displaying all events"""
     events = Event.objects.all().order_by('date')
     context = {
         "events" : events,
@@ -11,6 +12,7 @@ def calendar_index(request):
     return render(request, "calendar_index.html", context)
 
 def event_create(request):
+    """Creates view for creating an event"""
     form = EventForm()
     if request.method == 'POST':
         form = EventForm(request.POST)
@@ -27,6 +29,7 @@ def event_create(request):
     return render(request, "event_create.html", context)
 
 def event_edit(request, pk):
+    """Creates a view for editing an event"""
     event = Event.objects.get(id=pk)
     if request.method == 'POST':
         form = EventForm(request.POST or None)
@@ -47,6 +50,7 @@ def event_edit(request, pk):
     return render(request, 'event_edit.html', context)
 
 def event_delete(request, pk):
+    """Create a view for deleting events"""
     event = Event.objects.get(id=pk)
     event.delete()
     return redirect('calendar_index')
