@@ -1,13 +1,7 @@
 from django import forms
 
 class EventForm(forms.Form):
-    date = forms.CharField(
-        max_length=225,
-        widget=forms.TextInput(attrs={
-            "class": "form-control",
-            "placeholder": "Date: YYYY-MM-DD"
-        })
-    )
+    date = forms.DateTimeField()
     title = forms.CharField(
         max_length=225,
         widget=forms.TextInput(attrs={
@@ -15,4 +9,3 @@ class EventForm(forms.Form):
             "placeholder": "Enter event title here."
         })
     )
-    
