@@ -2,10 +2,11 @@
 <div class="col-md-8 offset-md-2">
     <h1>Event list</h1>
     <hr>
+    <a href="{% url 'event_create' %}">Create</a>
     {% for event in events %}
     <h2>{{ event.title }}</a></h2>
     <small>
-        {{ event.date }} |&nbsp;
+        {{ event.date }} | <a href="{% url 'event_edit' event.id %}">Edit</a> <a href="{% url 'event_delete' event.id %}">Delete</a> &nbsp;
     </small>
     {% endfor %}
 </div>
